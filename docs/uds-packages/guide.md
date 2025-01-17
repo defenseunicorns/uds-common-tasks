@@ -8,7 +8,7 @@ Integrating a Package fundamentally means:
 1. Creating a repository `uds-package-<name>` from [uds-package-template](https://github.com/defenseunicorns/uds-package-template)
 2. Integrating the upstream helm chart as a zarf package `zarf.yaml` to build a declarative OCI artifact
 3. Adding a UDS package Custom Resource `uds-package.yaml` to integrate with UDS Core via Pepr
-4. Build a 'zero CVE' package by replacing images with a `*-unicorn` flavored image
+4. Build a 'zero CVE' package by replacing images with a `*-unicorn` flavored image. Search for chainguard images here: <https://images.chainguard.dev/?>.
 
 ## Prerequisites
 

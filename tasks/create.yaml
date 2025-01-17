@@ -54,3 +54,25 @@ tasks:
           else
             echo "Registry1 bundles cannot be made for 'arm64'"
           fi
+
+  - name: image
+    description: Create the image for the supplied architecture
+    inputs:
+      path:
+        description: Path to the image being built
+        default: .
+      tag:
+        description: The tag of the image to build
+        default: ${IMAGE_TAG}
+      architecture:
+        description: The architecture of the image to build
+        default: ${UDS_ARCH}
+      name:
+        description: The name of the image to build
+        default: ${IMAGE_NAME}
+      options:
+        description: Additional options to pass to docker buildx
+    actions:
+      - description: Create the image for the supplied architecture
+        cmd: |
+          docker buildx build --load ${{ .inputs.path }} -t ${{ .inputs.name }}:${{ .inputs.tag }} --platform linux/${{ .inputs.architecture }} ${{ .inputs.options }}

@@ -148,3 +148,19 @@ tasks:
       - description: Publish bundle for the supplied architecture
         cmd: |
           ./uds publish "${{ .inputs.path }}/uds-bundle-${{ .inputs.name }}-${{ .inputs.architecture }}-${{ .inputs.version }}.tar.zst" "oci://${TARGET_REPO}/bundles" --no-progress
+
+  - name: image
+    description: Publish the given image
+    inputs:
+      tag:
+        description: The tag of the image to publish
+        default: ${IMAGE_TAG}
+      name:
+        description: The name of the image to publish
+        default: ${IMAGE_NAME}
+      options:
+        description: Additional options to pass to docker push
+    actions:
+      - description: Publish the given image
+        cmd: |
+          docker push ${{ .inputs.name }}:${{ .inputs.tag }} ${{ .inputs.options }}

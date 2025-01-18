@@ -123,7 +123,7 @@ tasks:
       - description: Install Lula
         env:
           # renovate: datasource=github-tags depName=defenseunicorns/lula versioning=semver-coerced
-          - LULA_VERSION=v0.14.0
+          - LULA_VERSION=v0.15.0
         cmd: |
           curl -o /usr/local/bin/lula -L \
           "https://github.com/defenseunicorns/lula/releases/download/${LULA_VERSION}/lula_${LULA_VERSION}_$(uname -s)_${{ .variables.ARCH }}" \
